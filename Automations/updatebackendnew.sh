@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the Instance ID and path to the .env file
-INSTANCE_ID="i-030da7d31a1dbbffc"
+INSTANCE_ID="i-0845236bac220d84c"
 
 # Retrieve the public IP address of the specified EC2 instance
 ipv4_address=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
@@ -18,5 +18,5 @@ if [[ "$current_url" != "FRONTEND_URL=\"http://${ipv4_address}:5173\"" ]]; then
         sed -i -e "s|FRONTEND_URL.*|FRONTEND_URL=\"http://${ipv4_address}:5173\"|g" $file_to_find
     else
         echo "ERROR: File not found."
-    fi
+     fi
 fi
